@@ -3,9 +3,41 @@ from flask import Flask, redirect, render_template, request, json
 
 app = Flask(__name__)
 
+JOBS = [
+    {
+        'id': 1,
+        'title': 'Data Analyst',
+        'location': 'Bengaluru, India',
+        'salary': 'Rs. 10,00,000'
+
+    },
+    {
+        'id': 2,
+        'title': 'Data Scientist',
+        'location': 'Delhi, India',
+        'salary': 'Rs. 15,00,000'
+
+    },
+    {
+        'id': 3,
+        'title': 'Frontend Developer',
+        'location': 'Vadodara, India',
+        'salary': 'Rs. 6,00,000'
+
+    },
+    {
+        'id': 4,
+        'title': 'Backend Developer',
+        'location': 'Pune, India',
+        'salary': 'Rs. 8,00,000'
+
+    },
+]
+
 @app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template('home.html', jobs=JOBS)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
