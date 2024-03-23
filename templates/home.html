@@ -50,12 +50,14 @@
         <h2>About Luidlink</h2>
         <p class="bodytext">Welcome to our Luidlink career website, your gateway to exciting professional opportunities! Explore a diverse array of career paths, from entry-level positions to executive roles, across industries ranging from technology to healthcare. Discover resources tailored to support your career journey, including resume tips, interview advice, and insights from industry experts. Whether you're a recent graduate, seasoned professional, or aspiring entrepreneur, our platform empowers you to navigate the evolving job market with confidence. Join us in shaping the future of work, where talent meets opportunity, and embark on a fulfilling career path tailored to your aspirations and ambitions.</p>
         <h2>Open Position</h2>
-        <p>
-            {% for job in jobs %}
-                {% include 'jobitem.html' %}
-            {% endfor %}
-        </p>
-        <div style="text-align: center;">
+        <div id="jobsection">
+            <p>
+                {% for job in jobs %}
+                    {% include 'jobitem.html' %}
+                {% endfor %}
+            </p>
+        </div>
+        <div id="contact" style="text-align: center;">
             <button class="btn btn-outline-primary">Contact Us</button> 
         </div>
         
