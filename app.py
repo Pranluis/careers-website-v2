@@ -1,6 +1,5 @@
 # Importing important modules in the app
-from flask import Flask, redirect, render_template, request, json
-
+from flask import Flask, redirect, render_template, request, json, jsonify
 app = Flask(__name__)
 
 JOBS = [
@@ -22,7 +21,7 @@ JOBS = [
         'id': 3,
         'title': 'Frontend Developer',
         'location': 'Vadodara, India',
-        'salary': 'Rs. 6,00,000'
+        'salary': 'Rs. 8,00,000'
 
     },
     {
@@ -37,6 +36,10 @@ JOBS = [
 @app.route("/")
 def home():
     return render_template('home.html', jobs=JOBS)
+
+@app.route("/api/jobs")
+def list_jobs():
+    return jsonify(JOBS)
 
 
 if __name__ == '__main__':
