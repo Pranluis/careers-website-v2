@@ -42,7 +42,7 @@ JOBS = [
         'id': 6,
         'title': 'UI/UX designer',
         'location': 'Chennai, India',
-        'salary': 'Rs. 5,00,000'
+        'salary': 'Rs. 8,00,000'
 
     },
 ]
