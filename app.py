@@ -1,58 +1,38 @@
 # Importing important modules in the app
 from flask import Flask, redirect, render_template, request, json, jsonify
+import sqlite3
 app = Flask(__name__)
 
-JOBS = [
-    {
-        'id': 1,
-        'title': 'Data Analyst',
-        'location': 'Bengaluru, India',
-        'salary': 'Rs. 10,00,000'
+def load_jobs():
+    conn = sqlite3.connect("luidlinkcareer.db")
+    cursor = conn.cursor()
+    get_data = f"SELECT * FROM jobs"
+    cursor.execute(get_data)
+    rows = cursor.fetchall()
 
-    },
-    {
-        'id': 2,
-        'title': 'Data Scientist',
-        'location': 'Delhi, India',
-        'salary': 'Rs. 15,00,000'
-
-    },
-    {
-        'id': 3,
-        'title': 'Frontend Developer',
-        'location': 'Vadodara, India',
-        'salary': 'Rs. 8,00,000'
-
-    },
-    {
-        'id': 4,
-        'title': 'Backend Developer',
-        'location': 'Pune, India',
-        'salary': 'Rs. 8,00,000'
-
-    },
-    {
-        'id': 5,
-        'title': 'Backend Developer',
-        'location': 'Chennai, India',
-        'salary': 'Rs. 7,00,000'
-
-    },
-    {
-        'id': 6,
-        'title': 'UI/UX designer',
-        'location': 'Chennai, India',
-        'salary': 'Rs. 8,00,000'
-
-    },
-]
+    def tuples_to_dict(keys, values):
+        return dict(zip(keys, values))
+    
+    keys = [description[0] for description in cursor.description]
+    jobs = [tuples_to_dict(keys, row) for row in rows]
+    conn.close()
+    return jobs
 
 @app.route("/")
 def home():
+    JOBS = load_jobs()
+    conn = sqlite3.connect("luidlinkcareer.db")
+    cursor = conn.cursor()
+    car_entry = '''CREATE TABLE IF NOT EXISTS jobs
+            (id INT NOT NULL PRIMARY KEY, title VARCHAR(250) NOT NULL, location VARCHAR(250) NOT NULL, salary INT, currency VARCHAR(250), responsibilities VARCHAR(2000), requirements VARCHAR(2000))'''
+    conn.execute(car_entry)
+    conn.commit()
+    conn.close()
     return render_template('home.html', jobs=JOBS)
 
 @app.route("/api/jobs")
 def list_jobs():
+    JOBS = load_jobs()
     return jsonify(JOBS)
 
 
