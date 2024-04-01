@@ -9,6 +9,14 @@
         "image-alt": "off"
       }
     ],
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "meta-viewport": "off",
+    "meta-charset-utf-8": "off",
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
+      }
+    ]
   }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'bootstrap.html' %}
+    <title>{{job.title}} - Luidlink Careers</title>
+    <style>
+        #container{
+            padding: 0 80px 0 80px;
+        }
+        h1 {
+            font-size: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            color: blueviolet;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+    </style>
+    
+   
+</head>
+<body>
+    {% include 'newnav.html' %}
+    <div id="container">
+        {% include 'banner.html' %}
+        <h1>Luidlink Career</h1>
+        <h3>{{job.title}}</h3>
+    
+        <p class="lead mt-0">{{job.location}}</p>
+        <h4>Responsibilities</h4>
+        <ul>
+            {% for line in job.responsibilities.split("\n") %}
+                <li>{{line}}</li>
+            {% endfor %}
+        </ul>
+        <h4>Requirements</h4>
+        <ol>
+            {% for line in job.requirements.split() %}
+                <li>{{line}}</li>
+            {% endfor %}
+        </ol>
+
+        <h4>Salary</h4>
+        <p>{{job.currency}} {{job.salary}}</p>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
