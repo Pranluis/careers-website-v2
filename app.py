@@ -23,6 +23,11 @@ def show_job(id):
     
     return render_template('jobpage.html', job=job)
 
+@app.route("/job/<id>/apply", methods=['post'])
+def apply_to_job(id):
+    data = request.form
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
