@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Application Submitted</title>
+        {% include 'bootstrap.html' %}
+        <style>
+        #container{
+            padding: 0 80px 0 80px;
+        }
+        h1 {
+            font-size: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            color: blueviolet;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+        </style>
+    </head>
+    <body>
+        {% include 'newnav.html' %}
+        <div id="container">
+            {% include 'banner.html' %}
+            <h1>Luidlink Career</h1>
+
+            <p>Your application for the role of <b>{{job.title}}</b> at Luidlink has been submitted.</p>
+
+            <b>Full name</b>
+            <div class="mb-2">{{application.full_name}} </div>
+            
+            <b>Email</b>
+            <div class="mb-2">{{application.email}}</div>
+
+            <b>LinkedIn URL</b>
+            <div class="mb-2">{{application.linkin}}</div>
+
+            <b>Work Experience</b>
+            <div class="mb-2">{{application.work}}</div>
+
+            <b>Resume URL</b>
+            <div class="mb-2">{{application.resume}}</div>
+        </div>
+        {% include 'footer.html' %}
+    </body>
+</html>

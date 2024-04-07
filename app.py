@@ -1,7 +1,7 @@
 # Importing important modules in the app
 from flask import Flask, redirect, render_template, request, json, jsonify
 import sqlite3
-from database import load_jobs, load_job_from_db
+from database import load_jobs, load_job_from_db, add_data_db
 app = Flask(__name__)
 
 
@@ -26,7 +26,13 @@ def show_job(id):
 @app.route("/job/<id>/apply", methods=['post'])
 def apply_to_job(id):
     data = request.form
-    return jsonify(data)
+    job = load_job_from_db(id)
+    
+    add_data_db(id, data)
+
+    return render_template('application_form_sub.html', application=data, job=job)
+
+
 
 
 if __name__ == '__main__':
