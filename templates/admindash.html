@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include 'bootstrap.html' %}
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Job id</th>
+            <th scope="col">Email</th>
+            <th scope="col">LinkedIn URL</th>
+            <th scope="col">Work experience</th>
+            <th scope="col">Resume URL</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for data in appdata %}
+        <tr>
+            <th scope="row">*</th>
+            <td>{{data.full_name}}</td>
+            <td>{{data.job_id}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.linkedin_url}}</td>
+            <td>{{data.work_exp}}</td>
+            <td>{{data.resume_url}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>         
+    
+</body>
+</html>
+
+
+<!-- {
+    "email": "rajcbi650@gmail.com",
+    "full_name": "Priyanshu Raj",
+    "id": 2,
+    "job_id": 8,
+    "linkedin_url": "https://www.linkedin.com/in/priyanshu-raj-154000257/",
+    "resume_url": "https://resume.priyanshu.com",
+    "work_exp": "Unity - 2yrs, C++- 6 months"
+}, -->
