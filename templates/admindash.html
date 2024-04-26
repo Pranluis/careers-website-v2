@@ -28,9 +28,9 @@
             <td>{{data.full_name}}</td>
             <td>{{data.job_id}}</td>
             <td>{{data.email}}</td>
-            <td>{{data.linkedin_url}}</td>
+            <td><a href="{{data.linkedin_url}}" target='_blank'>LindedIn URL</a></td>
             <td>{{data.work_exp}}</td>
-            <td>{{data.resume_url}}</td>
+            <td><a href="{{data.resume_url}}">Resume URL</a></td>
         </tr>
         {% endfor %}
         </tbody>
