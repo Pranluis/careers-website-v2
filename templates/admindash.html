@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% include 'bootstrap.html' %}
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  {% include 'bootstrap.html' %}
+  <style>
+    .table{
+      margin-top: 10px;
+    }
+  </style>
+
 <body>
-    <h1>Admin Dashboard</h1>
-    
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Full name</th>
-            <th scope="col">Job id</th>
-            <th scope="col">Email</th>
-            <th scope="col">LinkedIn URL</th>
-            <th scope="col">Work experience</th>
-            <th scope="col">Resume URL</th>
-          </tr>
-        </thead>
-        <tbody>
+  {% include 'admin_menu_navbar.html' %}
+  
+  <div class="table">
+    <table class="table table-dark table-striped-columns">
+      <thead>
+        <tr>
+          <th scope="col">Full name</th>
+          <th scope="col">Job id</th>
+          <th scope="col">Email</th>
+          <th scope="col">LinkedIn URL</th>
+          <th scope="col">Work experience</th>
+          <th scope="col">Resume URL</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for data in appdata %}
         <tr>
-            <th scope="row">*</th>
-            <td>{{data.full_name}}</td>
-            <td>{{data.job_id}}</td>
-            <td>{{data.email}}</td>
-            <td><a href="{{data.linkedin_url}}" target='_blank'>LindedIn URL</a></td>
-            <td>{{data.work_exp}}</td>
-            <td><a href="{{data.resume_url}}" target='_blank'>Resume URL</a></td>
+          <td>{{data.full_name}}</td>
+          <td>{{data.job_id}}</td>
+          <td>{{data.email}}</td>
+          <td><a href="{{data.linkedin_url}}" target='_blank'>LindedIn URL</a></td>
+          <td>{{data.work_exp}}</td>
+          <td><a href="{{data.resume_url}}" target='_blank'>Resume URL</a></td>
         </tr>
         {% endfor %}
-        </tbody>
-      </table>         
-    
+      </tbody>
+    </table>
+
+
+  </div> 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>
 
 
@@ -48,4 +59,6 @@
     "linkedin_url": "https://www.linkedin.com/in/priyanshu-raj-154000257/",
     "resume_url": "https://resume.priyanshu.com",
     "work_exp": "Unity - 2yrs, C++- 6 months"
+
+    table table-dark table-striped-columns
 }, -->

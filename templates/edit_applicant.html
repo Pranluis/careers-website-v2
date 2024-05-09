@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit application</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    {% include 'bootstrap.html' %}
+    <style>
+        body {
+            background: linear-gradient(to right, #f6d365, #fda085);
+            color: #333;
+        }
+
+        .container {
+            border: 2px solid #f6d365;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-table {
+            margin-top: 20px;
+        }
+
+        .transaction-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: #f6d365;
+            border-color: #f6d365;
+        }
+
+        .btn-primary:hover {
+            background-color: #f6d365;
+            border-color: #f6d365;
+        }
+    </style>
+
+<body>
+    {% include 'admin_menu_navbar.html' %}
+
+    <div class="container">
+        <h1 class="text-center">Applicants Records</h1>
+
+        <table class="table transaction-table">
+            <thead>
+                <tr>
+                    <th>Person Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person in data %}
+                <tr>
+                    <td>{{ person.full_name }}</td>
+                    <td>{{ person.email }}</td>
+                    <td class="transaction-actions">
+                        <a class="btn btn-sm btn-primary" href="#">Accept</a>
+                        <a class="btn btn-sm btn-danger" href="/adminlogin/editapplicants/{{ person.id }}/delete">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

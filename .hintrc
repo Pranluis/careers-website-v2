@@ -18,6 +18,12 @@
         "list": "off"
       }
     ],
-    "axe/language": "off"
+    "axe/language": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
   }
 }

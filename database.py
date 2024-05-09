@@ -1,10 +1,13 @@
 import sqlite3
 
-def add_sql_commands():
+def add_sql_commands(data):
     conn = sqlite3.connect("luidlinkcareer.db")
     cursor = conn.cursor()
-    enter_data = f'INSERT INTO jobs VALUES (8,"Game Developer", "Mumbai, India", 7000, "dollars", "You have to create games on unity", "Unity, C++")'
-    cursor.execute(enter_data)  
+    jobs_cnt = load_jobs()
+    job_id = len(jobs_cnt) + 1
+    enter_data = f'INSERT INTO jobs (id, title, location, salary, currency, responsibilities, requirements) VALUES (?, ?, ?, ?, ?, ?, ?)'
+    enter_values = (job_id, data['title'], data['loc'], data['sal'], data['curr'], data['res'], data['req'])
+    cursor.execute(enter_data, enter_values)  
     conn.commit()
     conn.close()
 
@@ -70,4 +73,30 @@ def add_data_db(job_id, data):
     conn.close()
 
 
+def del_job_db(id):
+    conn = sqlite3.connect("luidlinkcareer.db")
+    cursor = conn.cursor()
+    delete_job_data = f"DELETE FROM jobs WHERE id = '{id}'"
+    cursor.execute(delete_job_data)
+    conn.commit()
+    conn.close()
 
+
+def edit_sql_commands(data, id):
+    conn = sqlite3.connect("luidlinkcareer.db")
+    cursor = conn.cursor()
+    edit_data = f"UPDATE jobs SET title = '{data['title']}', location = '{data['loc']}', salary = '{data['sal']}', currency = '{data['curr']}', responsibilities = '{data['res']}', requirements = '{data['req']}' WHERE id = '{id}'"
+    cursor.execute(edit_data)  
+    conn.commit()
+    conn.close()
+
+
+def del_applicant_db(id):
+    conn = sqlite3.connect("luidlinkcareer.db")
+    cursor = conn.cursor()
+    delete_job_data = f"DELETE FROM application WHERE id = '{id}'"
+    cursor.execute(delete_job_data)
+    conn.commit()
+    conn.close()
+
+    

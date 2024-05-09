@@ -38,7 +38,7 @@
         </ul>
         <h4>Requirements</h4>
         <ol>
-            {% for line in job.requirements.split() %}
+            {% for line in job.requirements.split("\n") %}
                 <li>{{line}}</li>
             {% endfor %}
         </ol>
